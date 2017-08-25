@@ -12,9 +12,9 @@ namespace Client
         public ChatRoomGUI chatRoomGUI;
         TcpClient clientSocket;
         NetworkStream stream;
-        public Client(string IP, int port)
+        public Client(string IP, int port, string userName)
         {
-            this.chatRoomGUI = new ChatRoomGUI(this);
+            //this.chatRoomGUI = new ChatRoomGUI(this);
             clientSocket = new TcpClient();
             clientSocket.Connect(IPAddress.Parse(IP), port);
             stream = clientSocket.GetStream();

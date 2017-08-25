@@ -12,11 +12,11 @@ namespace Server
         NetworkStream stream;
         TcpClient client;
         public string UserId;
-        public Client(NetworkStream Stream, TcpClient Client)
+        public Client(NetworkStream Stream, TcpClient Client, string userName)
         {
             stream = Stream;
             client = Client;
-            UserId = "495933b6-1762-47a1-b655-483510072e74";
+            UserId = userName;
         }
         public void Send(string Message)
         {

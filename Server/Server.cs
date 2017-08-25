@@ -21,20 +21,36 @@ namespace Server
         }
         public void Run()
         {
-            AcceptClient();           
+            AcceptClient();                   
         }
         public void SecondRun()
         {
-            string message = client.Recieve();
-            Respond(message);
+            bool thing = true;
+            while (thing == true)
+            {
+                try
+                {
+                    string message = client.Recieve();
+                    Respond(message);
+                }
+                catch (NullReferenceException)
+                {
+                    SecondRun();
+                }
+            }    
         }
         private void AcceptClient()
         {
-            TcpClient clientSocket = default(TcpClient);
-            clientSocket = server.AcceptTcpClient();
-            Console.WriteLine("Connected");
-            NetworkStream stream = clientSocket.GetStream();
-            client = new Client(stream, clientSocket);
+            bool thing = true;
+            while (thing == true)
+            {
+                TcpClient clientSocket = default(TcpClient);
+                clientSocket = server.AcceptTcpClient();
+                Console.WriteLine("Connected");
+                NetworkStream stream = clientSocket.GetStream();
+                string userName = client.Recieve();
+                client = new Client(stream, clientSocket, userName);
+            }
         }
         private void Respond(string body)
         {
