@@ -37,5 +37,10 @@ namespace Client
            string getUserName = Console.ReadLine();
             
         }
+        public void ExitKey()
+        {
+
+        }
+
     }
 }

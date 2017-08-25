@@ -11,6 +11,7 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -48,6 +49,7 @@
             this.CheckOnline.TabIndex = 10;
             this.CheckOnline.Text = "Online";
             this.CheckOnline.UseVisualStyleBackColor = true;
+            this.CheckOnline.CheckedChanged += new System.EventHandler(this.CheckOnline_CheckedChanged);
             // 
             // label1
             // 
@@ -68,6 +70,7 @@
             this.Exit.TabIndex = 13;
             this.Exit.Text = "Exit";
             this.Exit.UseVisualStyleBackColor = true;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // PeopleOnline
             // 
@@ -88,6 +91,7 @@
             this.PeopleOnChat.Size = new System.Drawing.Size(244, 374);
             this.PeopleOnChat.TabIndex = 15;
             this.PeopleOnChat.UseCompatibleStateImageBehavior = false;
+            this.PeopleOnChat.SelectedIndexChanged += new System.EventHandler(this.PeopleOnChat_SelectedIndexChanged);
             // 
             // ConvoBox
             // 
@@ -96,6 +100,7 @@
             this.ConvoBox.Size = new System.Drawing.Size(977, 326);
             this.ConvoBox.TabIndex = 16;
             this.ConvoBox.Text = "";
+            this.ConvoBox.TextChanged += new System.EventHandler(this.ConvoBox_TextChanged);
             // 
             // textBox
             // 
@@ -105,6 +110,7 @@
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(977, 56);
             this.textBox.TabIndex = 17;
+            this.textBox.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // Send
             // 
@@ -113,8 +119,10 @@
             this.Send.Name = "Send";
             this.Send.Size = new System.Drawing.Size(231, 57);
             this.Send.TabIndex = 18;
+            this.Send.Tag = "client.Send";
             this.Send.Text = "Send";
             this.Send.UseVisualStyleBackColor = true;
+            this.Send.Click += new System.EventHandler(this.Send_Click);
             // 
             // ChatRoomGUI
             // 
