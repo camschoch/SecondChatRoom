@@ -9,6 +9,8 @@ namespace Client
 {
     public class Client
     {
+        public bool thing = false;
+        public string textwords;
         public ChatRoomGUI chatRoomGUI;
         TcpClient clientSocket;
         NetworkStream stream;
@@ -18,17 +20,26 @@ namespace Client
             clientSocket = new TcpClient();
             clientSocket.Connect(IPAddress.Parse(IP), port);
             stream = clientSocket.GetStream();
-            Send();
+            
         }
         public void Send()
         {
-            while (true)
-            {
-                string messageString = UI.GetInput();
-                byte[] message = Encoding.ASCII.GetBytes(messageString);
-                stream.Write(message, 0, message.Count());
-            }
+           
+            string messageString = textwords;
+            byte[] message = Encoding.ASCII.GetBytes(messageString);
+            stream.Write(message, 0, message.Count());
+            //chatRoomGUI.textBox.Text = null;
+
+
+
         }
+
+        internal void Send(string textwords)
+        {
+            throw new NotImplementedException();
+            
+        }
+
         public void Recieve()
         {
             while (true)
@@ -44,10 +55,7 @@ namespace Client
             string getUserName = Console.ReadLine();
             return getUserName;
         }
-        public void ExitKey()
-        {
-
-        }
+        
 
     }
 }

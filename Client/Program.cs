@@ -12,13 +12,8 @@ namespace Client
         static void Main(string[] args)
         {
 
-                Client client = new Client("192.168.0.136", 9999);
+            Client client = new Client("192.168.0.107", 9999);
             Application.Run(client.chatRoomGUI);
-
-                client.Send();
-                client.Recieve();
-                
-            
             
         }
     }
