@@ -28,10 +28,17 @@ namespace Server
             byte[] recievedMessage = new byte[256];
             stream.Read(recievedMessage, 0, recievedMessage.Length);
             string recievedMessageString = Encoding.ASCII.GetString(recievedMessage);
+            //ADD QUEUE HERE
             Console.WriteLine(recievedMessageString);
             return recievedMessageString;
         }
-
+        public string RecieveUserName()
+        {
+            byte[] recievedMessage = new byte[256];
+            stream.Read(recievedMessage, 0, recievedMessage.Length);
+            string recievedMessageString = Encoding.ASCII.GetString(recievedMessage);
+            return recievedMessageString;
+        }
         //public void SendAndRecive()
         //{
         //    while (true)
