@@ -5,11 +5,14 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 namespace Client
 {
     public class Client
     {
+        
         public bool thing = false;
+        public string listBox;
         public string textwords;
         public ChatRoomGUI chatRoomGUI;
         TcpClient clientSocket;
@@ -34,27 +37,32 @@ namespace Client
 
         }
 
-        internal void Send(string textwords)
-        {
-            throw new NotImplementedException();
-            
-        }
-
         public void Recieve()
         {
-            while (true)
+            //while (true)
+            //{
+            byte[] recievedMessage = new byte[256];
+            stream.Read(recievedMessage, 0, recievedMessage.Length);
+            string message = UI.DisplayMessage(Encoding.ASCII.GetString(recievedMessage));
+            chatRoomGUI.thingy = message;
+            try
             {
-                byte[] recievedMessage = new byte[256];
-                stream.Read(recievedMessage, 0, recievedMessage.Length);
-                UI.DisplayMessage(Encoding.ASCII.GetString(recievedMessage));
+                chatRoomGUI.chatBox.Text += chatRoomGUI.thingy;
             }
+            catch (InvalidOperationException)
+            {
+                chatRoomGUI.RecievingMessages.Join();
+                Recieve();
+            }
+   
+            //}
         }
-        public string UserName()
-        {
-            Console.WriteLine("UserName");
-            string getUserName = Console.ReadLine();
-            return getUserName;
-        }
+        //public string UserName()
+        //{
+        //    Console.WriteLine("UserName");
+        //    string getUserName = Console.ReadLine();
+        //    return getUserName;
+        //}
         
 
     }

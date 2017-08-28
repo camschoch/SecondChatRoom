@@ -34,9 +34,9 @@
             this.Exit = new System.Windows.Forms.Button();
             this.PeopleOnline = new System.Windows.Forms.TextBox();
             this.PeopleOnChat = new System.Windows.Forms.ListView();
-            this.ConvoBox = new System.Windows.Forms.RichTextBox();
             this.textBox = new System.Windows.Forms.TextBox();
             this.Send = new System.Windows.Forms.Button();
+            this.chatBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CheckOnline
@@ -93,15 +93,6 @@
             this.PeopleOnChat.UseCompatibleStateImageBehavior = false;
             this.PeopleOnChat.SelectedIndexChanged += new System.EventHandler(this.PeopleOnChat_SelectedIndexChanged);
             // 
-            // ConvoBox
-            // 
-            this.ConvoBox.Location = new System.Drawing.Point(26, 89);
-            this.ConvoBox.Name = "ConvoBox";
-            this.ConvoBox.Size = new System.Drawing.Size(977, 326);
-            this.ConvoBox.TabIndex = 16;
-            this.ConvoBox.Text = "";
-            this.ConvoBox.TextChanged += new System.EventHandler(this.ConvoBox_TextChanged);
-            // 
             // textBox
             // 
             this.textBox.Location = new System.Drawing.Point(26, 434);
@@ -124,14 +115,23 @@
             this.Send.UseVisualStyleBackColor = true;
             this.Send.Click += new System.EventHandler(this.Send_Click);
             // 
+            // chatBox
+            // 
+            this.chatBox.Location = new System.Drawing.Point(26, 78);
+            this.chatBox.Multiline = true;
+            this.chatBox.Name = "chatBox";
+            this.chatBox.ReadOnly = true;
+            this.chatBox.Size = new System.Drawing.Size(977, 330);
+            this.chatBox.TabIndex = 20;
+            // 
             // ChatRoomGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1303, 504);
+            this.Controls.Add(this.chatBox);
             this.Controls.Add(this.Send);
             this.Controls.Add(this.textBox);
-            this.Controls.Add(this.ConvoBox);
             this.Controls.Add(this.PeopleOnChat);
             this.Controls.Add(this.PeopleOnline);
             this.Controls.Add(this.Exit);
@@ -151,8 +151,8 @@
         private System.Windows.Forms.Button Exit;
         private System.Windows.Forms.TextBox PeopleOnline;
         private System.Windows.Forms.ListView PeopleOnChat;
-        private System.Windows.Forms.RichTextBox ConvoBox;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Button Send;
+        public System.Windows.Forms.TextBox chatBox;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 
 namespace Client
@@ -14,11 +15,14 @@ namespace Client
     public partial class ChatRoomGUI : Form
     {
         Client client;
+        public Thread RecievingMessages;
+        public string thingy;
+        
        
         public ChatRoomGUI(Client client)
         {
             this.client = client;
-            
+            this.RecievingMessages = new Thread(new ThreadStart(this.client.Recieve));
             InitializeComponent();
         }
 
@@ -31,6 +35,7 @@ namespace Client
             client.thing = true;
             client.Send();
             textBox.Text = null;
+            textBox_TextChanged(sender, e);
            
 
 
@@ -46,10 +51,6 @@ namespace Client
             
         }
 
-        private void ConvoBox_TextChanged(object sender, EventArgs e)
-        {
-            client.Recieve();
-        }
 
         private void PeopleOnChat_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -64,7 +65,9 @@ namespace Client
 
         private void CheckOnline_CheckedChanged(object sender, EventArgs e)
         {
-            
+            this.RecievingMessages.Start();
         }
+
+       
     }
 }
