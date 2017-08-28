@@ -12,11 +12,12 @@ namespace Server
 {
     class Server
     {
+        Dictionary<string, Client> ClientDictionary = new Dictionary<string, Client>();
         public static Client client;
         TcpListener server;
         public Server()
         {
-            server = new TcpListener(IPAddress.Parse("192.168.0.136"), 9999);
+            server = new TcpListener(IPAddress.Parse("192.168.0.107"), 9999);
             server.Start();
         }
         public void Run()
@@ -31,21 +32,21 @@ namespace Server
             //RecievingMessages.Start();
             //                   
         }
-        public void SendAndRecive()
-        {
-            //fix
-            while (true)
-            {
-                //try
-                //{
-                    string message = client.Recieve();
-                    Respond(message);
-                //}
-                //catch (NullReferenceException)
-                //{                                      
-                //}
-            }
-        }
+        //public void SendAndRecive()
+        //{
+        //    //fix
+        //    while (true)
+        //    {
+        //        //try
+        //        //{
+        //            string message = client.Recieve();
+        //            Respond(message);
+        //        //}
+        //        //catch (NullReferenceException)
+        //        //{                                      
+        //        //}
+        //    }
+        //}
         private void AcceptClient()
         {
             while (true)
@@ -64,11 +65,10 @@ namespace Server
         private void CreateClient()
         {
             client.UserId = client.RecieveUserName();
-            Console.WriteLine("Your user name is" + client.UserId);
-            Dictionary <string, Client> ClientDictionary = new Dictionary<string, Client>();
+            Console.WriteLine("Your user name is " + client.UserId);            
             ClientDictionary.Add(client.UserId, client);
-            Thread SendAndReciveThread = new Thread(SendAndRecive);
-            SendAndReciveThread.Start();
+            //Thread SendAndReciveThread = new Thread(SendAndRecive);
+            client.SendAndReciveThread.Start();
             //add a thread to client for recieving messages and sending his own??
         }
         private void Respond(string body)
