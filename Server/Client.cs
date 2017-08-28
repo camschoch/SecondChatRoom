@@ -12,11 +12,11 @@ namespace Server
         NetworkStream stream;
         TcpClient client;
         public string UserId;
-        public Client(NetworkStream Stream, TcpClient Client, string userName)
+        public Client(NetworkStream Stream, TcpClient Client)
         {
             stream = Stream;
             client = Client;
-            UserId = userName;
+            UserId = "";
         }
         public void Send(string Message)
         {
@@ -32,5 +32,20 @@ namespace Server
             return recievedMessageString;
         }
 
+        //public void SendAndRecive()
+        //{
+        //    while (true)
+        //    {
+        //        try
+        //        {
+        //            string message = Recieve();
+        //            Send(message);
+        //        }
+        //        catch (NullReferenceException)
+        //        {
+        //            SendAndRecive();
+        //        }
+        //    }
+        //}
     }
 }

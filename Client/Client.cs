@@ -12,30 +12,37 @@ namespace Client
         public ChatRoomGUI chatRoomGUI;
         TcpClient clientSocket;
         NetworkStream stream;
-        public Client(string IP, int port, string userName)
+        public Client(string IP, int port)
         {
-            //this.chatRoomGUI = new ChatRoomGUI(this);
+            this.chatRoomGUI = new ChatRoomGUI(this);
             clientSocket = new TcpClient();
             clientSocket.Connect(IPAddress.Parse(IP), port);
             stream = clientSocket.GetStream();
+            Send();
         }
         public void Send()
         {
-            string messageString = UI.GetInput();
-            byte[] message = Encoding.ASCII.GetBytes(messageString);
-            stream.Write(message, 0, message.Count());
+            while (true)
+            {
+                string messageString = UI.GetInput();
+                byte[] message = Encoding.ASCII.GetBytes(messageString);
+                stream.Write(message, 0, message.Count());
+            }
         }
         public void Recieve()
         {
-            byte[] recievedMessage = new byte[256];
-            stream.Read(recievedMessage, 0, recievedMessage.Length);
-            UI.DisplayMessage(Encoding.ASCII.GetString(recievedMessage));
+            while (true)
+            {
+                byte[] recievedMessage = new byte[256];
+                stream.Read(recievedMessage, 0, recievedMessage.Length);
+                UI.DisplayMessage(Encoding.ASCII.GetString(recievedMessage));
+            }
         }
-        public void UserName()
+        public string UserName()
         {
-           Console.WriteLine("UserName");
-           string getUserName = Console.ReadLine();
-            
+            Console.WriteLine("UserName");
+            string getUserName = Console.ReadLine();
+            return getUserName;
         }
         public void ExitKey()
         {
