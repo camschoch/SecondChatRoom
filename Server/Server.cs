@@ -22,32 +22,30 @@ namespace Server
         public void Run()
         {
             //parralell with recieve messages thread
-            //Thread AcceptingNewClients = new Thread(AcceptClient);
-            //AcceptingNewClients.Start();
+            Thread AcceptingNewClients = new Thread(AcceptClient);
+            AcceptingNewClients.Start();
             //
-            Parallel.Invoke(AcceptClient, client.SendAndRecive);
+            //Parallel.Invoke(AcceptClient, SendAndRecive);
             //wont use here
             //Thread RecievingMessages = new Thread(SecondRun);
             //RecievingMessages.Start();
             //                   
         }
-        //public void SecondRun()
-        //{
-        //    //fix
-        //    bool thing = true;
-        //    while (thing == true)
-        //    {
-        //        try
-        //        {
-        //            string message = client.Recieve();
-        //            Respond(message);
-        //        }
-        //        catch (NullReferenceException)
-        //        {
-        //            SecondRun();
-        //        }
-        //    }    
-        //}
+        public void SendAndRecive()
+        {
+            //fix
+            while (true)
+            {
+                //try
+                //{
+                    string message = client.Recieve();
+                    Respond(message);
+                //}
+                //catch (NullReferenceException)
+                //{                                      
+                //}
+            }
+        }
         private void AcceptClient()
         {
             while (true)
@@ -65,9 +63,12 @@ namespace Server
 
         private void CreateClient()
         {
-            client.UserId = client.Recieve();
-            Dictionary<string, Client> ClientDictionary = new Dictionary<string, Client>();
+            client.UserId = client.RecieveUserName();
+            Console.WriteLine("Your user name is" + client.UserId);
+            Dictionary <string, Client> ClientDictionary = new Dictionary<string, Client>();
             ClientDictionary.Add(client.UserId, client);
+            Thread SendAndReciveThread = new Thread(SendAndRecive);
+            SendAndReciveThread.Start();
             //add a thread to client for recieving messages and sending his own??
         }
         private void Respond(string body)
