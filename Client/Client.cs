@@ -6,6 +6,9 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.ComponentModel;
+using System.Windows.Forms;
+
 namespace Client
 {
     public class Client
@@ -22,48 +25,29 @@ namespace Client
             this.chatRoomGUI = new ChatRoomGUI(this);
             clientSocket = new TcpClient();
             clientSocket.Connect(IPAddress.Parse(IP), port);
-            stream = clientSocket.GetStream();
-            
+            stream = clientSocket.GetStream();            
         }
+
+       
         public void Send()
-        {
-           
+        {           
             string messageString = textwords;
             byte[] message = Encoding.ASCII.GetBytes(messageString);
             stream.Write(message, 0, message.Count());
-            //chatRoomGUI.textBox.Text = null;
-
-
-
         }
 
         public void Recieve()
         {
-            //while (true)
-            //{
-            byte[] recievedMessage = new byte[256];
-            stream.Read(recievedMessage, 0, recievedMessage.Length);
-            string message = UI.DisplayMessage(Encoding.ASCII.GetString(recievedMessage));
-            chatRoomGUI.thingy = message;
-            try
+            while (true)
             {
-                chatRoomGUI.chatBox.Text += chatRoomGUI.thingy;
+                byte[] recievedMessage = new byte[256];
+                stream.Read(recievedMessage, 0, recievedMessage.Length);
+                string message = UI.DisplayMessage(Encoding.ASCII.GetString(recievedMessage));
+                chatRoomGUI.chatBox.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    chatRoomGUI.chatBox.Text += message += "   ";
+                });
             }
-            catch (InvalidOperationException)
-            {
-                chatRoomGUI.RecievingMessages.Join();
-                Recieve();
-            }
-   
-            //}
-        }
-        //public string UserName()
-        //{
-        //    Console.WriteLine("UserName");
-        //    string getUserName = Console.ReadLine();
-        //    return getUserName;
-        //}
-        
-
+        }               
     }
 }

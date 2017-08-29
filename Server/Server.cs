@@ -17,36 +17,14 @@ namespace Server
         TcpListener server;
         public Server()
         {
-            server = new TcpListener(IPAddress.Parse("192.168.0.107"), 9999);
+            server = new TcpListener(IPAddress.Parse("192.168.1.180"), 9999);
             server.Start();
         }
         public void Run()
-        {
-            //parralell with recieve messages thread
+        {            
             Thread AcceptingNewClients = new Thread(AcceptClient);
-            AcceptingNewClients.Start();
-            //
-            //Parallel.Invoke(AcceptClient, SendAndRecive);
-            //wont use here
-            //Thread RecievingMessages = new Thread(SecondRun);
-            //RecievingMessages.Start();
-            //                   
+            AcceptingNewClients.Start();           
         }
-        //public void SendAndRecive()
-        //{
-        //    //fix
-        //    while (true)
-        //    {
-        //        //try
-        //        //{
-        //            string message = client.Recieve();
-        //            Respond(message);
-        //        //}
-        //        //catch (NullReferenceException)
-        //        //{                                      
-        //        //}
-        //    }
-        //}
         private void AcceptClient()
         {
             while (true)
@@ -67,9 +45,7 @@ namespace Server
             client.UserId = client.RecieveUserName();
             Console.WriteLine("Your user name is " + client.UserId);            
             ClientDictionary.Add(client.UserId, client);
-            //Thread SendAndReciveThread = new Thread(SendAndRecive);
             client.SendAndReciveThread.Start();
-            //add a thread to client for recieving messages and sending his own??
         }
         private void Respond(string body)
         {

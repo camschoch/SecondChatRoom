@@ -43,9 +43,10 @@
             // 
             this.CheckOnline.AutoSize = true;
             this.CheckOnline.Font = new System.Drawing.Font("Segoe Script", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CheckOnline.Location = new System.Drawing.Point(26, 8);
+            this.CheckOnline.Location = new System.Drawing.Point(20, 6);
+            this.CheckOnline.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CheckOnline.Name = "CheckOnline";
-            this.CheckOnline.Size = new System.Drawing.Size(98, 32);
+            this.CheckOnline.Size = new System.Drawing.Size(81, 26);
             this.CheckOnline.TabIndex = 10;
             this.CheckOnline.Text = "Online";
             this.CheckOnline.UseVisualStyleBackColor = true;
@@ -55,18 +56,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Sitka Display", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(381, 10);
+            this.label1.Location = new System.Drawing.Point(286, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 62);
+            this.label1.Size = new System.Drawing.Size(184, 50);
             this.label1.TabIndex = 11;
             this.label1.Text = "Fancy Chat";
             // 
             // Exit
             // 
             this.Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Exit.Location = new System.Drawing.Point(960, 24);
+            this.Exit.Location = new System.Drawing.Point(720, 20);
+            this.Exit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(57, 48);
+            this.Exit.Size = new System.Drawing.Size(43, 39);
             this.Exit.TabIndex = 13;
             this.Exit.Text = "Exit";
             this.Exit.UseVisualStyleBackColor = true;
@@ -77,38 +80,38 @@
             this.PeopleOnline.BackColor = System.Drawing.SystemColors.ControlText;
             this.PeopleOnline.Font = new System.Drawing.Font("Segoe Print", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PeopleOnline.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.PeopleOnline.Location = new System.Drawing.Point(1052, -3);
+            this.PeopleOnline.Location = new System.Drawing.Point(789, -2);
+            this.PeopleOnline.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PeopleOnline.Name = "PeopleOnline";
-            this.PeopleOnline.Size = new System.Drawing.Size(219, 48);
+            this.PeopleOnline.Size = new System.Drawing.Size(165, 40);
             this.PeopleOnline.TabIndex = 14;
             this.PeopleOnline.Text = "People Online";
             this.PeopleOnline.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // PeopleOnChat
             // 
-            this.PeopleOnChat.Location = new System.Drawing.Point(1037, 54);
+            this.PeopleOnChat.Location = new System.Drawing.Point(778, 44);
+            this.PeopleOnChat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PeopleOnChat.Name = "PeopleOnChat";
-            this.PeopleOnChat.Size = new System.Drawing.Size(244, 374);
+            this.PeopleOnChat.Size = new System.Drawing.Size(184, 305);
             this.PeopleOnChat.TabIndex = 15;
             this.PeopleOnChat.UseCompatibleStateImageBehavior = false;
             this.PeopleOnChat.SelectedIndexChanged += new System.EventHandler(this.PeopleOnChat_SelectedIndexChanged);
             // 
             // textBox
             // 
-            this.textBox.Location = new System.Drawing.Point(26, 434);
-            this.textBox.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox.Location = new System.Drawing.Point(20, 353);
             this.textBox.Multiline = true;
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(977, 56);
+            this.textBox.Size = new System.Drawing.Size(734, 46);
             this.textBox.TabIndex = 17;
             this.textBox.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // Send
             // 
-            this.Send.Location = new System.Drawing.Point(1040, 434);
-            this.Send.Margin = new System.Windows.Forms.Padding(4);
+            this.Send.Location = new System.Drawing.Point(780, 353);
             this.Send.Name = "Send";
-            this.Send.Size = new System.Drawing.Size(231, 57);
+            this.Send.Size = new System.Drawing.Size(173, 46);
             this.Send.TabIndex = 18;
             this.Send.Tag = "client.Send";
             this.Send.Text = "Send";
@@ -117,18 +120,20 @@
             // 
             // chatBox
             // 
-            this.chatBox.Location = new System.Drawing.Point(26, 78);
+            this.chatBox.Location = new System.Drawing.Point(20, 63);
+            this.chatBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chatBox.Multiline = true;
             this.chatBox.Name = "chatBox";
             this.chatBox.ReadOnly = true;
-            this.chatBox.Size = new System.Drawing.Size(977, 330);
+            this.chatBox.Size = new System.Drawing.Size(734, 269);
             this.chatBox.TabIndex = 20;
+            this.chatBox.TextChanged += new System.EventHandler(this.chatBox_TextChanged);
             // 
             // ChatRoomGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1303, 504);
+            this.ClientSize = new System.Drawing.Size(977, 410);
             this.Controls.Add(this.chatBox);
             this.Controls.Add(this.Send);
             this.Controls.Add(this.textBox);
@@ -137,6 +142,7 @@
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CheckOnline);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ChatRoomGUI";
             this.Text = "ChatRoomGUI";
             this.ResumeLayout(false);

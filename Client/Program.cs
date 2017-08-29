@@ -12,7 +12,7 @@ namespace Client
         static void Main(string[] args)
         {
 
-            Client client = new Client("192.168.0.107", 9999);
+            Client client = new Client("192.168.1.180", 9999);
             Application.Run(client.chatRoomGUI);
             
         }

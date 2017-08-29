@@ -48,33 +48,11 @@ namespace Server
         }
         public void SendAndRecive()
         {
-            //fix
             while (true)
             {
-                //try
-                //{
                 string message = Recieve();
                 Send(message);
-                //}
-                //catch (NullReferenceException)
-                //{                                      
-                //}
             }
         }
-        //public void SendAndRecive()
-        //{
-        //    while (true)
-        //    {
-        //        try
-        //        {
-        //            string message = Recieve();
-        //            Send(message);
-        //        }
-        //        catch (NullReferenceException)
-        //        {
-        //            SendAndRecive();
-        //        }
-        //    }
-        //}
     }
 }

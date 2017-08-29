@@ -16,46 +16,31 @@ namespace Client
     {
         Client client;
         public Thread RecievingMessages;
-        public string thingy;
-        
-       
         public ChatRoomGUI(Client client)
         {
             this.client = client;
             this.RecievingMessages = new Thread(new ThreadStart(this.client.Recieve));
             InitializeComponent();
         }
-
-        
         private void Send_Click(object sender, EventArgs e)
         {
-
-           
             client.textwords = textBox.Text;
             client.thing = true;
             client.Send();
             textBox.Text = null;
             textBox_TextChanged(sender, e);
-           
-
-
         }
 
         private void textBox_TextChanged(object sender, EventArgs e)
         {
-            //if(client.thing == true)
-            //{
-            //    textBox.Text = null;
-            //}
-            //client.thing = false;
-            
+
         }
 
 
         private void PeopleOnChat_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-           
+
+
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -66,8 +51,12 @@ namespace Client
         private void CheckOnline_CheckedChanged(object sender, EventArgs e)
         {
             this.RecievingMessages.Start();
+            
         }
 
-       
+        private void chatBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
